@@ -135,8 +135,8 @@ class HBNBCommand(cmd.Cmd):
                 try:
                     setattr(new_obj, atrVal[0], float(atrVal[1]))
                 except ValueError:
-                    value = atrVal[1][1:-1].replace("_", " ")
-                    setattr(new_obj, atrVal[0], value)
+                    val = atrVal[1][1:-1].replace("_", " ").replace('"', '\\"')
+                    setattr(new_obj, atrVal[0], val)
             storage.save()
             atrNo -= 1
 
@@ -220,12 +220,12 @@ class HBNBCommand(cmd.Cmd):
             if args not in HBNBCommand.classes:
                 print("** class doesn't exist **")
                 return
-            for k, v in storage._FileStorage__objects.items():
+            for k, v in storage.all().items():
                 if k.split('.')[0] == args:
-                    print_list.append(str(v))
+                    print_list.append(v.__str__())
         else:
-            for k, v in storage._FileStorage__objects.items():
-                print_list.append(str(v))
+            for k, v in storage.all().items():
+                print_list.append(v.__str__())
 
         print(print_list)
 
@@ -333,6 +333,7 @@ class HBNBCommand(cmd.Cmd):
         """ Help information for the update class """
         print("Updates an object with new information")
         print("Usage: update <className> <id> <attName> <attVal>\n")
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
