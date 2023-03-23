@@ -28,6 +28,6 @@ class State(BaseModel, Base):
                 if cls[0] == 'City':
                     city_list.append(allObj[k])
             for city in city_list:
-                if city.state_id = self.id:
+                if city.state_id == self.id:
                     stateCity.append(city)
             cities = stateCity
