@@ -26,13 +26,13 @@ class DBStorage:
 
     def __init__(self):
         user = os.getenv("HBNB_MYSQL_USER")
-        pw = os.getenv("HBNB_MYSQL_PWD")
+        passwd = os.getenv("HBNB_MYSQL_PWD")
         host = os.getenv("HBNB_MYSQL_HOST")
         db = os.getenv("HBNB_MYSQL_DB")
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'
-                                      .format(user, pw, host, db),
+                                      .format(user, passwd, host, db),
                                       pool_pre_ping=True)
-        self.__session = sessionmaker(bind=self.__engine)
+        # self.__session = sessionmaker(bind=self.__engine)
         environ = os.getenv("HBNB_ENV")
         if environ == "test":
             Base.drop_all(self.__engine)
@@ -40,6 +40,8 @@ class DBStorage:
     def all(self, cls=None):
         new = {}
         if cls:
+            if isinstance(cls, str):
+                cls = eval(cls)
             for obj in self.__session.query(cls):
                 key = "{}.{}".format(obj.__class__.__name__, obj.id)
                 new[key] = obj
