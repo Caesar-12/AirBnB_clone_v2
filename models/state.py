@@ -16,7 +16,7 @@ class State(BaseModel, Base):
     # st = os.getenv("HBNB_TYPE_STORAGE")
     cities = relationship("City", cascade='all, delete, delete-orphan',
                           backref="state")
-    
+
     @property
     def cities(self):
         city_list = []
@@ -29,4 +29,4 @@ class State(BaseModel, Base):
         for city in city_list:
             if city.state_id == self.id:
                 stateCity.append(city)
-        cities = stateCity
+        return stateCity
