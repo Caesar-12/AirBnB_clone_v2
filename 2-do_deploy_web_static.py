@@ -46,7 +46,7 @@ def do_deploy(archive_path):
         Distributes archive to servers
     """
 
-    if not os.path.isfile(archive_path):
+    if os.path.isfile(archive_path) is False:
         return False
 
     path_name = "/data/web_static/releases/web_static_{}{}{}{}{}{}".format(
