@@ -49,6 +49,7 @@ def do_deploy(archive_path):
     if os.path.isfile(archive_path) is False:
         return False
 
+    date = datetime.now()
     path_name = "/data/web_static/releases/web_static_{}{}{}{}{}{}".format(
             date.year,
             date.month,
