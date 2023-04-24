@@ -23,7 +23,7 @@ def do_pack():
         date.minute,
         date.second
         )
-    #arch_dir = "versions/{}".format(arch_name)
+    # arch_dir = "versions/{}".format(arch_name)
     if not os.path.isdir("versions"):
         os.mkdir("versions")
 
