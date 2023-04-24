@@ -33,7 +33,7 @@ def do_pack():
 
     try:
         local("tar -cvzf {} web_static".format(arch_dir))
-        size = os.stat(output).st_size
+        # size = os.stat(output).st_size
         # print("web_static packed: {} -> {} Bytes".format(output, size))
     except Exception:
         arch_dir = None
@@ -87,6 +87,7 @@ def deploy():
 
     arch_path = do_pack()
 
+    print(arch_path)
     if arch_path is None:
         return False
 
