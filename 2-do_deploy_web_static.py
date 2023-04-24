@@ -44,7 +44,7 @@ def do_pack():
 
 def do_deploy(archive_path):
     """
-    distributes archive to servers
+        Distributes archive to servers
     """
 
     if not os.path.isfile(archive_path):
