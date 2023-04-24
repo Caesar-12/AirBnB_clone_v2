@@ -24,7 +24,7 @@ def do_pack():
         date.seconds
         )
     arch_dir = "versions/{}".format(arch_name)
-    if not os.path.isdir(arch_dir):
+    if not os.path.isdir("versions"):
         os.mkdirs("versions")
 
     print("Packing web_static to {}".format(arch_dir))
