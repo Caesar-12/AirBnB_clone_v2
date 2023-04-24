@@ -12,6 +12,7 @@ def do_pack():
     """
     function to create arhive
     """
+    
     date = datetime.now()
     arch_name = "web_static_{}{}{}{}{}{}.tgz".format(
         date.year,
@@ -27,5 +28,10 @@ def do_pack():
     
     print("Packing web_static to {}".format(arch_dir))
     try:
-        local("tar -cvzf {} -C ")
+        local("tar -cvzf {} web_static".format(arch_dir))
+        size = os.stat(output).st_size
+        print("web_static packed: {} -> {} Bytes".format(output, size))
+    except:
+        arch_dir = None
 
+    return arch_dir
