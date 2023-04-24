@@ -9,7 +9,7 @@ import os
 from datetime import datetime
 
 env.hosts = ["100.25.111.142", "3.86.18.48"]
-env.user = "ubuntu"
+# env.user = "ubuntu"
 
 
 def do_pack():
@@ -27,8 +27,7 @@ def do_pack():
         date.second
         )
     # arch_dir = "versions/{}".format(arch_name)
-    if not os.path.isdir("versions"):
-        local("mkdir -p versions")
+    local("mkdir -p versions")
 
     # print("Packing web_static to {}".format(arch_dir))
 
