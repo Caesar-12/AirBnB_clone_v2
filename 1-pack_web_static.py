@@ -15,15 +15,15 @@ def do_pack():
     """
 
     date = datetime.now()
-    arch_name = "web_static_{}{}{}{}{}{}.tgz".format(
+    arch_dir = "versions/web_static_{}{}{}{}{}{}.tgz".format(
         date.year,
         date.month,
         date.day,
         date.hour,
         date.minute,
-        date.seconds
+        date.second
         )
-    arch_dir = "versions/{}".format(arch_name)
+    #arch_dir = "versions/{}".format(arch_name)
     if not os.path.isdir("versions"):
         os.mkdirs("versions")
 
