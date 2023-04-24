@@ -87,7 +87,7 @@ def deploy():
 
     arch_path = do_pack()
 
-    if not arch_path:
+    if arch_path is None:
         return False
 
     result = do_deploy(arch_path)
