@@ -25,7 +25,7 @@ def do_pack():
         )
     #arch_dir = "versions/{}".format(arch_name)
     if not os.path.isdir("versions"):
-        os.mkdirs("versions")
+        os.mkdir("versions")
 
     print("Packing web_static to {}".format(arch_dir))
 
